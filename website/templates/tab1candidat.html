@@ -1,0 +1,92 @@
+{% extends "home-recruteur.html" %}
+
+{% block title%} 
+Offre
+{% endblock %}
+
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block candidatures %} class="menu-item" {% endblock %}
+        
+{% block content %}
+<div class="container">
+    <div class="container">
+        <div class="row1">
+                <br><br><br>
+                <br>
+                <h3> Details De L'annonce :</h3>
+                <label>
+                 <strong> Poste Propose :</strong> 
+                </label>
+                <strong>{{ offre.titre }}</strong> <br> <br>
+                <label>
+                    <strong> Specialite  :</strong> 
+                   </label>
+                <strong>{{ offre.speciality }}</strong>  <br> <br>
+                <label>
+                    <strong> Description De L'offre  :</strong> 
+                   </label>
+                    {{ offre.description | safe }} <br> <br>
+                        <p><strong>Région:</strong></p>
+                        <p>{{ offre.region }}</p>
+                        <br>
+                        <p><strong>Salaire:</strong></p>
+                        <p>{{ offre.salaire }} DH</p> 
+                        <p><strong>Type de contrat:</strong></p>
+                        <p>{{ offre.type_de_contrat }}</p>
+                        <br>
+                        
+                        <br>
+                     
+                
+        </div>
+
+        <div class="card">
+            <div class="table-responsive text-nowrap" style="min-height:300px;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nom  </th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+                  {% for candidat in candidats %}
+                  <tr>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ candidat.nom }}</strong></td>
+                    <td>
+                        {{ candidat.prenom }}
+                      </td>
+                    <td>
+                      {{ candidat.email }}
+                    </td>
+                    <td>{{ candidat.telephone}}</td>
+                    <td>
+                      <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+
+                          <a class="dropdown-item" href="/candidat-profile/{{candidat.id}}"
+                          ><i class='bx bx-show'></i> Details  Candidat</a>
+                         
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+
+
+
+    {% endblock content %}

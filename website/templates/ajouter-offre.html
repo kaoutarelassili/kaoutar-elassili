@@ -1,0 +1,111 @@
+{% extends "home-recruteur.html" %}
+
+{% block titre%} 
+ Ajouter offre
+{% endblock %}
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block ajouter_offre %} class="menu-item" {% endblock %}
+
+{% block content %}
+
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Ajouter une offre</h4>
+      <div class="card mb-4">
+        <h5 class="card-header">Offre Details</h5>
+        <div class="card-body">
+          <form method="POST" action="{{ url_for('views.add_offer') }}">
+            <div class="mb-3">
+              <label for="titre" class="form-label">Titre</label>
+              <input class="form-control" type="text" id="titre" name="titre" placeholder="Enter titre" required>
+            </div>
+            
+            <div class="mb-3 col-md-6">
+              <label for="dateLimite" class="form-label">Date de Limite</label>
+              <input class="form-control" type="date" id="dateLimite" name="dateLimite" />
+          </div>
+            <div class="mb-3">
+              <label for="region" class="form-label">Type de Contrat</label>
+              <select class="form-select" id="type_de_contrat" name="type_de_contrat" required>
+                <option value="" selected disabled>type_de_contrat</option>
+                <option value="cdi">CDI</option>
+                <option value="cdd">CDD</option>
+                
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="5" placeholder="Enter description" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="region" class="form-label">Region</label>
+              <select class="form-select" id="region" name="region" required>
+                <option value="" selected disabled>Select region</option>
+                <option value="Casablanca-Settat">Casablanca-Settat</option>
+                <option value="Rabat-Salé-Kénitra">Rabat-Salé-Kénitra</option>
+                <option value="Fès-Meknès">Fès-Meknès</option>
+                <option value="Marrakech-Safi">Marrakech-Safi</option>
+                <option value="Tanger-Tétouan-Al Hoceïma">Tanger-Tétouan-Al Hoceïma</option>
+                <option value="Oriental">Oriental</option>
+                <option value="Souss-Massa">Souss-Massa</option>
+                <option value="Béni Mellal-Khénifra">Béni Mellal-Khénifra</option>
+                <option value="Drâa-Tafilalet">Drâa-Tafilalet</option>
+                <option value="Laâyoune-Sakia El Hamra">Laâyoune-Sakia El Hamra</option>
+                <option value="Dakhla-Oued Ed-Dahab">Dakhla-Oued Ed-Dahab</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="salaire" class="form-label">Salaire</label>
+              <input class="form-control" type="number" id="salaire" name="salaire" placeholder="Enter salaire" required>
+            </div>
+            <div class="mb-3">
+              <label for="speciality" class="form-label">Specialite</label>
+              <input class="form-control" type="text" id="speciality" name="speciality" placeholder="Enter speciality" required>
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-primary">Ajouter Offre</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- / Content -->
+
+    <div class="content-backdrop fade"></div>
+  </div>
+  <!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+</div>
+
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="assets/vendor/libs/jquery/jquery.js"></script>
+<script src="assets/vendor/libs/popper/popper.js"></script>
+<script src="assets/vendor/js/bootstrap.js"></script>
+<script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+
+<!-- Page JS -->
+<script src="assets/js/dashboards-analytics.js"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+{% endblock %}

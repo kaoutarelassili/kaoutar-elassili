@@ -1,0 +1,86 @@
+{% extends "home-recruteur.html" %}
+
+{% block content %}
+
+<br>
+  <h5>Modifier l'offre "{{ offre.titre }}"</h5>
+
+  {% if flash_messages %}
+    <ul class="flash-messages">
+      {% for message in flash_messages %}
+        <li class="{{ message.category }}">{{ message.message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="POST" >
+    <div class="row">
+
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="nom" class="form-label">Titre</label>
+          <input class="form-control" type="text" id="titre" name="titre" 
+            value="{{offre.titre}}" required />
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label for="prenom" class="form-label">Description</label>
+          <input class="form-control" type="text" name="description" id="description" 
+            value="{{offre.description}}"  required/>
+        </div>
+
+        <div class="mb-3 col-md-6"">
+          <label for="region" class="form-label">Region</label>
+          <select class="form-select" id="region" name="region" required>
+            <option value="" selected disabled>Selectionner La Region</option>
+            <option value="Casablanca-Settat" {% if offre.region == "Casablanca-Settat" %} selected {% endif %}>Casablanca-Settat</option>
+            <option value="Rabat-Salé-Kénitra" {% if offre.region == "Rabat-Salé-Kénitra" %} selected {% endif %}>Rabat-Salé-Kénitra</option>
+            <option value="Fès-Meknès" {% if offre.region == "Fès-Meknès" %} selected {% endif %}>Fès-Meknès</option>
+            <option value="Marrakech-Safi" {% if offre.region == "Marrakech-Safi" %} selected {% endif %} >Marrakech-Safi</option>
+            <option value="Tanger-Tétouan-Al Hoceïma" {% if offre.region == "Tanger-Tétouan-Al Hoceïma" %} selected {% endif %} >Tanger-Tétouan-Al Hoceïma</option>
+            <option value="Oriental" {% if offre.region == "Oriental" %} selected {% endif %} >Oriental</option>
+            <option value="Souss-Massa" {% if offre.region == "Souss-Massa" %} selected {% endif %} >Souss-Massa</option>
+            <option value="Béni Mellal-Khénifra" {% if offre.region == "Béni Mellal-Khénifra" %} selected {% endif %} >Béni Mellal-Khénifra</option>
+            <option value="Drâa-Tafilalet" {% if offre.region == "Drâa-Tafilalet" %} selected {% endif %} >Drâa-Tafilalet</option>
+            <option value="Laâyoune-Sakia El Hamra" {% if offre.region == "Laâyoune-Sakia El Hamra" %} selected {% endif %} >Laâyoune-Sakia El Hamra</option>
+            <option value="Dakhla-Oued Ed-Dahab" {% if offre.region == "Dakhla-Oued Ed-Dahab" %} selected {% endif %} >Dakhla-Oued Ed-Dahab</option>
+          </select>
+        </div>
+
+          <div class="mb-3 col-md-6"">
+            <label for="Salaire" class="form-label">Salaire</label>
+            <input type="text" class="form-control" id="Salaire" name="salaire" value="{{offre.salaire}}" required
+              />
+          </div>
+
+
+
+          <div class="mb-3 col-md-6"">
+            <label class="form-label" for="ville">Statut</label>
+            <div class="input-group input-group-merge">
+              <input type="text" id="statut" name="status" class="form-control"  value="{{offre.status}}"  required/>
+               
+            </div>
+          </div>
+
+
+          <div class="mb-3 col-md-6"">
+            <label for="domaine" class="form-label">Specialite</label>
+            <input type="text" class="form-control" id="Specialite" name="speciality" 
+             value="{{offre.speciality }}" required />
+          </div>
+
+         <div class="mb-3 col-md-6"">
+      <label for="region" class="form-label">Type De Contrat</label>
+      <select class="form-select" id="type_de_contrat" name="type_de_contrat" required>
+        <option value="" selected disabled>Type De Contract</option>
+        <option value="cdi" {% if offre.type_de_contrat == 'cdi' %} selected {% endif %}>CDI</option>
+        <option value="cdd" {% if offre.type_de_contrat == 'cdd' %} selected {% endif %}>CDD</option>
+        
+      </select>
+    </div>
+    <div class="mt-2">
+      <button type="submit" class="btn btn-primary me-2">Modifier</button>
+    </div>
+  </form>
+{% endblock %}

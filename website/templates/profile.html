@@ -1,0 +1,139 @@
+{% extends "home-candidat.html" %}
+
+{% block title%}
+Profile
+{% endblock %}
+
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block info %} class="menu-item active" {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span> Profile</h4>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <h5 class="card-header"> Details Du Profile </h5>
+          <!-- Account -->
+          <form method="post" enctype="multipart/form-data">
+            <div class="card-body">
+              <div class="d-flex align-items-start align-items-sm-center gap-4">
+                <input type="hidden" name="id" value="{{ user.id }}" />
+                <img src="{{ url_for('views.get_uploaded_image', filename=user.image ) }}" alt="user-avatar"
+                  class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+
+                <div class="button-wrapper">
+                  <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                    <span class="d-none d-sm-block">Changer Votre Photo</span>
+                    <i class="bx bx-upload d-block d-sm-none"></i>
+                    <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg"
+                      name="image" />
+                  </label>
+
+                  <p class="text-muted mb-0">JPG, GIF or PNG. Max size of 800K</p>
+                </div>
+              </div>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body">
+              <form id="formAccountSettings" method="POST">
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input class="form-control" type="text" id="nom" name="nom" placeholder="{{user.nom}}"
+                      value="{{user.nom}}" />
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="prenom" class="form-label">Prenom</label>
+                    <input class="form-control" type="text" name="prenom" id="prenom" placeholder="{{user.prenom}}"
+                      value="{{user.prenom}}" />
+                  </div>
+
+
+
+                  <div class="mb-3 col-md-6">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input class="form-control" type="text" id="email" name="email" value="{{user.email}}"
+                      placeholder="{{user.email}}" />
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="telephone" class="form-label">Telephone</label>
+                    <input type="text" class="form-control" id="telephone" name="telephone" value="{{user.telephone}}"
+                      placeholder="{{user.telephone}}" />
+                  </div>
+
+
+
+                  <div class="mb-3 col-md-6">
+                    <label class="form-label" for="ville">Ville</label>
+                    <div class="input-group input-group-merge">
+                      <input type="text" id="ville" name="ville" class="form-control" placeholder="{{user.ville}}"
+                        value="{{user.ville}}" />
+                    </div>
+                  </div>
+
+
+                  <div class="mb-3 col-md-6">
+                    <label for="domaine" class="form-label">Domaine</label>
+                    <input type="text" class="form-control" id="domaine" name="domaine" placeholder="{{user.domaine}}"
+                       value="{{user.domaine}}" />
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label class="form-label" for="country">Genre</label>
+                    <select id="genre" class="select2 form-select" name="genre">
+
+                      <option value="Femme" {% if user.genre=="Femme" %}selected{% endif %}>Femme</option>
+                      <option value="Homme" {% if user.genre=="Homme" %}selected{% endif %}>Homme</option>
+
+                    </select>
+                  </div>
+
+                  <div class="mb-3 col-md-6">
+                    <label class="form-label" for="cv">CV</label>
+
+                    <input type="file" id="cv" name="cv" class="form-control" accept=".pdf" />
+
+                  </div>
+
+
+
+                  <div class="mt-2">
+                    <button type="submit" class="btn btn-primary me-2">Modifier</button>
+                    <a href="/supprimerCandidat" class="btn btn-danger deactivate-account">Supprimer</a>
+                     
+                    <!-- <button type="reset" class="btn btn-outline-secondary">Cancel</button> -->
+                  </div>
+              
+                  <div class="buy-now">
+                  <a href="{{ url_for('views.upload_cv_route', filename=user.cv) }}" class="btn btn-danger btn-buy-now" download>Telecharger CV</a>
+                </div>
+                </div>
+              </form>
+              <!-- /Account -->
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Content -->
+
+    <!-- Footer -->
+
+    <!-- / Footer -->
+
+    <div class="content-backdrop fade"></div>
+  </div>
+  <!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+</div>
+
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+
+{% endblock %}

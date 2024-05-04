@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>{% block title%} Tableau de board {% endblock%}</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon/favicon.ico')}}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/fonts/boxicons.css')}}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/demo.css')}}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/libs/apex-charts/apex-charts.css')}}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="{{ url_for('static', filename='assets/vendor/js/helpers.js')}}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{{ url_for('static', filename='assets/js/config.js')}}"></script>
+
+
+    
+
+    <style>
+      body{
+     background-image: url('assets/img/back.png');
+     background-size: cover;
+     background-position: center;
+   }
+   </style>
+
+  </head>
+
+  <body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            
+        {% if messages %}
+                
+            {% for category, message in messages %}
+                
+                {% if category == 'success' %}
+                  <div
+                        class="bs-toast toast toast-placement-ex m-2 fade show bg-success top-0 end-0 hide"
+                        role="alert"
+                        aria-live="assertive"
+                        aria-atomic="true"
+                        data-delay="2000"
+                      >
+                        <div class="toast-header">
+                          <i class="bx bx-bell me-2"></i>
+                          <div class="me-auto fw-semibold"></div>
+                          <small></small>
+                          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                          {{ message }}
+                        </div>
+                      </div>
+                    
+                {% elif category == 'error' %}
+                <div
+                class="bs-toast toast toast-placement-ex m-2 fade show bg-danger top-0 end-0 hide"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                data-delay="2000"
+              >
+                <div class="toast-header">
+                  <i class="bx bx-bell me-2"></i>
+                  <div class="me-auto fw-semibold"></div>
+                  <small></small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  {{ message }}
+                </div>
+              </div>
+                    {% endif %}
+                <!-- <script>alert('{{message}}')</script> -->
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/home-Candidat" class="app-brand-link">
+              <span class="app-brand-logo demo">
+              <img src="{{ url_for('static', filename='assets/img/getjob.jpg')}}" height="30px" width="40px"/>
+              </span>
+              <span class="app-brand-text fw-bolder ms-4">CANDIDAT PANEL</span>
+            </a>
+      
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+      
+          <div class="menu-inner-shadow"></div>
+      
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            
+            <li {% block tableau_de_bord %} class="menu-item active" {% endblock %}>
+              <a href="/home-Candidat" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Tableau de bord</div>
+              </a>
+            </li>
+            <!-- Layouts -->
+            <li {% block info %} class="menu-item" {% endblock %}>
+              <a href="/profile" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Informations Personnelles</div>
+              </a>
+            </li>
+
+         
+            <li {% block candidatures %} class="menu-item" {% endblock %}>
+              <a href="/mescandidatures" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Mes Candidatures</div>
+              </a>
+            </li>
+          
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Chercher..."
+                    aria-label="Chercher..."
+                  />
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+                  
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="{{ url_for('views.get_uploaded_image', filename=user.image ) }}" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                   
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/profile">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">Mon Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Se Deconnecter</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          {% block content %}
+
+          <div class="check-out">
+            <p></p>
+            <div class="form">
+              <form method="post">
+              <div class="job-search">
+                <img style="width: 20px; margin-right: 30px;" src="{{ url_for('static', filename='assets/img/icon/search-icon.svg')}}" alt="">
+                <input type="text" name="keyword" placeholder="Saisir Votre Recherche">
+              </div>
+              <div class="location">
+                
+                <label for="lname">Localisation:</label>
+                <select name="location" id="location">
+                  <option value="0">Choisie une region</option>
+                  {% for r in regions %}
+                    <option value="{{ r[0] }}">{{ r[0] }}</option>
+                  {% endfor %}
+
+                </select>
+                <input class="search main-btn" type="submit" value="Chercher" placeholder="Chercher">
+                
+
+              </div>
+
+              </form>
+            </div>
+            <div class="follow">
+              
+            </div>
+          </div>
+
+          <div class="content-wrapper">
+            <!-- Content -->
+            <section class="bg-light">
+              <div class="container p-5">
+                  <div class="row mb-5">
+                      <div class="col">
+                          <h3 class="text-uppercase text-center text-dark">DERNIÈRES OFFRES D´EMPLOI!</h3>
+                      </div>
+                  </div>
+                  <div class="row">
+                    {% for offre in offre_emploi %}
+                    <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
+                        <div class="card lesson">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">
+                                    <a  href="{{ url_for('views.offrec', offre_id=offre.id) }}">{{ offre.titre }}</a>
+                                </h5>
+                                <p class="card-text mb-2">
+                                    <a class="text-decoration-none" href="#">{{ offre.region }}</a>
+                                </p>
+                                <p class="card-text description-truncated">{{ offre.description|truncate(100) }}</p>
+                                <p class="card-text description-full d-none">{{ offre.description }}</p>
+                                <p class="card-text">Date limite: {{ offre.dateLimite }}</p> <!-- Ajouter la date de fin d'emploi ici -->
+          
+                                <a class="btn btn-primary show-more-btn"  href="{{ url_for('views.offrec', offre_id=offre.id) }}">Afficher plus</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                     
+              </div>
+          </section>
+            </div>
+            {% endblock %}
+    <!-- / Layout wrapper -->
+
+ 
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{ url_for('static', filename='assets/vendor/libs/jquery/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='assets/vendor/js/menu.js')}}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="{{ url_for('static', filename='assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+
+    <!-- Page JS -->
+    <script src="{{ url_for('static', filename='assets/js/dashboards-analytics.js')}}"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>

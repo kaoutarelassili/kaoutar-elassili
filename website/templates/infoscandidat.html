@@ -1,0 +1,68 @@
+{% extends "home-recruteur.html" %}
+
+{% block title%} 
+Offre
+{% endblock %}
+
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block candidatures %} class="menu-item" {% endblock %}
+        
+{% block content %}
+<div class="container">
+    <div class="row1">
+            <br><br>
+            
+           
+            <h3> Details Du Candidat :</h3>
+
+            <img src="{{ url_for('views.get_uploaded_image', filename=candidat.image ) }}" alt="user-avatar"
+                  class="d-block rounded" height="150" width="150" id="uploadedAvatar" />  <br> <br>
+
+            <label>
+             <strong> Nom :</strong> 
+            </label>
+
+            <strong>{{ candidat.nom}}</strong> <br> <br> 
+
+            <label>
+                <strong> Prenom :</strong> 
+            </label>
+
+               <strong>{{ candidat.prenom}}</strong> <br> <br>
+            
+
+            <label>
+                <strong> Email :</strong> 
+            </label>
+            <strong>{{ candidat.email }}</strong>  <br> <br>
+
+            <label>
+                <strong> Telephone :</strong> 
+            </label>
+            <strong>{{ candidat.telephone }}</strong>  <br> <br>
+
+            <label>
+                <strong> Ville :</strong> 
+            </label>
+            <strong>{{ candidat.ville }}</strong>  <br> <br>
+
+            <label>
+                <strong> Domaine :</strong> 
+            </label>
+            <strong>{{ candidat.domaine }}</strong>  <br> <br>
+
+            <div class="buy-now">
+                <a href="{{ url_for('views.upload_cv_route', filename=candidat.cv) }}" class="btn btn-danger btn-buy-now" download>Voir CV</a>
+            </div>
+
+
+               
+                    
+                    <br>
+                 
+            
+    </div>
+</div>
+
+    {% endblock content %}

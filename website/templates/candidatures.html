@@ -1,0 +1,152 @@
+{% extends "home-recruteur.html" %}
+
+{% block title%} 
+  Mes candidatures Recruteur
+{% endblock %}
+
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block candidatures %} class="menu-item" {% endblock %}
+        {% block content %}
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Lists des candidatures</h4>
+
+              <!-- Basic Bootstrap Table -->
+              
+              <div class="card">
+                <h5 class="card-header">Table des candidatures</h5>
+                <div class="table-responsive text-nowrap" style="min-height:300px;">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Titre</th>
+                        <th>Region</th>
+                        <th>Date limite</th>
+                        <th>Specialite</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+
+                      {% for offre in offres %}
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ offre.titre }}</strong></td>
+                        <td>{{ offre.region }}</td>
+                        <td>
+                          {{ offre.dateLimite }}
+                        </td>
+                        <td>{{ offre.speciality }}</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+
+                              <a class="dropdown-item" href="/offre-profile/{{offre.titre}}"
+                              ><i class="bx bx-trash me-1"></i> afficher</a
+                            >
+                              <a class="dropdown-item" href="/offres/modifier/{{offre.id}}"
+                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                              >
+                              <a class="dropdown-item" href="/offres/annuler/{{offre.id}}"
+                                ><i class="bx bx-trash me-1"></i> Annuler</a
+                              >
+                             
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      
+                      {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Basic Bootstrap Table -->
+
+
+
+              <!-- Bootstrap Dark Table -->
+
+              <!--/ Bootstrap Dark Table -->
+
+
+              <!-- Bootstrap Table with Header - Dark -->
+
+              <!--/ Bootstrap Table with Header Dark -->
+
+
+              <!-- Bootstrap Table with Header - Light -->
+
+              <!-- Bootstrap Table with Header - Light -->
+
+
+              <!-- Bootstrap Table with Header - Footer -->
+
+              <!-- Bootstrap Table with Header - Footer -->
+
+              <!-- Bootstrap Table with Caption -->
+
+              <!-- Bootstrap Table with Caption -->
+
+
+              <!-- Striped Rows -->
+
+              <!--/ Striped Rows -->
+
+              <!-- Bordered Table -->
+
+              <!--/ Bordered Table -->
+
+              <!-- Borderless Table -->
+
+              <!--/ Borderless Table -->
+
+              <!-- Hoverable Table rows -->
+
+              <!--/ Hoverable Table rows -->
+
+              <!-- Small table -->
+
+
+              <!--/ Small table -->
+
+              <!-- Contextual Classes -->
+
+
+              <!--/ Contextual Classes -->
+
+              <!-- Table within card -->
+
+              <!--/ Table within card -->
+
+              <!--/ Responsive Table -->
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+    {% endblock  %}
+
+
+    

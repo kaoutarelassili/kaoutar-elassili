@@ -1,0 +1,45 @@
+{% extends "home-candidat.html" %}
+
+{% block title%} 
+Offre
+{% endblock %}
+
+
+{% block tableau_de_bord %} class="menu-item" {% endblock %}
+{% block candidatures %} class="menu-item" {% endblock %}
+        
+{% block content %}
+<div class="container">
+    <div class="row1">
+            <br><br><br>
+            <br> <br>
+            <a href="/postuler/{{ offre.id}}" class="btn btn-primary me-2">Postuler</a> <br> <br>
+            <h3> Details De L'annonce :</h3>
+            <label>
+             <strong> Poste Propose :</strong> 
+            </label>
+            <strong>{{ offre.titre }}</strong> <br> <br>
+            <label>
+                <strong> Specialite  :</strong> 
+               </label>
+            <strong>{{ offre.speciality }}</strong>  <br> <br>
+            <label>
+                <strong> Description De L'offre  :</strong> 
+               </label>
+                {{ offre.description | safe }} <br> <br>
+                    <p><strong>Région:</strong></p>
+                    <p>{{ offre.region }}</p>
+                    <br>
+                    <p><strong>Salaire:</strong></p>
+                    <p>{{ offre.salaire }} DH</p> 
+                    <p><strong>Type de contrat:</strong></p>
+                    <p>{{ offre.type_de_contrat }}</p>
+                    <br>
+                    
+                    <br>
+                 
+            
+    </div>
+</div>
+
+    {% endblock content %}
